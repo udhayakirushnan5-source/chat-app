@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App | Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="bg-white p-10 rounded-xl shadow-lg w-full max-w-sm">
+    <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" class="w-full mb-4 p-3 border rounded-lg">
+      <input type="password" id="password" placeholder="Password" class="w-full mb-4 p-3 border rounded-lg">
+      <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition mb-4">Login</button>
+      <p class="text-center">Don't have an account? <a href="#" id="signupLink" class="text-indigo-600 font-semibold">Signup</a></p>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const signupLink = document.getElementById('signupLink');
+
+    // Simulate login
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Check if user exists in localStorage
+      const storedEmail = localStorage.getItem('userEmail');
+      const storedPassword = localStorage.getItem('userPassword');
+
+      if(email === storedEmail && password === storedPassword){
+        window.location.href = 'chat-list.html';
+      } else {
+        alert('Invalid credentials! Try signing up first.');
+      }
+    });
+
+    // Simulate signup
+    signupLink.addEventListener('click', () => {
+      const email = prompt("Enter your email:");
+      const password = prompt("Enter a password:");
+      if(email && password){
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
+        alert("Signup successful! Now login with your credentials.");
+      }
+    });
+  </script>
+</body>
+</html>
