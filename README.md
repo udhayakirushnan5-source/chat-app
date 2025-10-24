@@ -1,4 +1,4 @@
-# chat-app
+
 # Chat Application UI
 
 A *front-end only chat application UI* built with *HTML, CSS, JavaScript, and Tailwind CSS*.  
